@@ -1,0 +1,5 @@
+get_single_user_url = "https://reqres.in/api/users"
+get_single_user_2_url = "https://reqres.in/api/users/2"
+get_list_users_url = "https://reqres.in/api/users?page="
+get_list_users_2_page_url = "https://reqres.in/api/users?page=2"
+get_list_resources =  "https://reqres.in/api/unknown"
