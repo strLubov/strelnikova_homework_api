@@ -1,19 +1,20 @@
-from schemas.list_resources import list_resources_schema
-from helpers.metods import check_ok_response
-from helpers.urls import get_list_resources
-
-import requests
 from requests import Response
 
+from helpers.metods import check_ok_response
+from helpers.urls import  APIRoutes
+from schemas.list_resources import list_resources_schema
 
-def test_check_ok_responce_get_resources():
-    check_ok_response(get_list_resources, list_resources_schema)
+
+def test_check_ok_responce_get_resources(reqres_api_client):
+    url = f'{APIRoutes.RESOURCES}2'
+    response = reqres_api_client.send_request(method="get", url=url)
+    check_ok_response(response=response, schema=list_resources_schema)
 
 
-def test_get_resources_total():
+def test_get_resources_total(reqres_api_client):
     """Проверяем общее количество пользователей"""
-
-    response: Response = requests.get(get_list_resources)
+    url = f'{APIRoutes.RESOURCES}2'
+    response: Response = reqres_api_client.send_request(method='get', url=url)
     total = response.json()["total"]
 
     assert total == 12
